@@ -13,7 +13,7 @@ A Telegram bot for learning foreign languages with voice communication support.
 ## Installation
 
 1. Clone the repository: bash
-git clone https://github.com/your-username/language-learning-bot](https://github.com/roschek/speakingAiBot.git
+git clone https://github.com/roschek/speakingAiBot
 cd language-learning-bot
 2. Install dependencies: bash
 pip install -r requirements.txt
