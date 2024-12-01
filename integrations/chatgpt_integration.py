@@ -31,6 +31,8 @@ def get_chatgpt_response(message: str, language: str = "ru") -> str:
         8. Use topics relevant to daily life
         9. Provide cultural context when appropriate
         10. Remember previous context in the conversation
+        11. after every student request show and explain errors.
+        12. if student ask, correct you answer 
 
         If you notice mistakes:
         - Point them out politely
