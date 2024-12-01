@@ -15,11 +15,8 @@ def get_chatgpt_response(message: str, language: str = "ru") -> str:
     Returns:
         str: Ответ от ChatGPT
     """
-    try:
-        # Инициализация клиента
+    try:        
         client = OpenAI(api_key=config.OPENAI_API_KEY)
-        
-        # Формирование системного сообщения с указанием языка
         system_message = f"""You are a highly qualified {language} language teacher with years of experience.
         Your task is to engage in a conversational language learning dialogue with the student.
 
@@ -49,7 +46,6 @@ def get_chatgpt_response(message: str, language: str = "ru") -> str:
         - Ask follow-up questions to encourage speaking
         """
         
-        # Отправка запроса к API
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[

@@ -5,13 +5,9 @@ import config
 
 logger = logging.getLogger(__name__)
 
-def convert_voice_to_text(voice_file_path: str, language: str = "ru") -> str:
-    """
-    Конвертирует голосовое сообщение в текст используя OpenAI Whisper
-    """
+def convert_voice_to_text(voice_file_path: str, language: str = "ru") -> str:   
     try:
-        client = OpenAI(api_key=config.OPENAI_API_KEY)
-        
+        client = OpenAI(api_key=config.OPENAI_API_KEY)        
         with open(voice_file_path, "rb") as audio_file:
             transcript = client.audio.transcriptions.create(
                 model="whisper-1",

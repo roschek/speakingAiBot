@@ -10,8 +10,7 @@ from integrations.elevenlabs_integration import generate_voice_message
 
 logger = logging.getLogger(__name__)
 
-def handle_error(error: Exception) -> str:
-    """Обработка ошибок и возврат сообщения для пользователя"""
+def handle_error(error: Exception) -> str:    
     logger.error(f"Ошибка: {str(error)}", exc_info=True)
     return config.ERROR_MESSAGES['general_error']
 
@@ -45,8 +44,7 @@ class Bot:
             user_id = message.from_user.id
             user_language = get_user_language(user_id) or config.DEFAULT_LANGUAGE
             
-            if message.content_type == 'voice':
-                logger.info("Получено голосовое сообщение")
+            if message.content_type == 'voice':                
                 file_info = self.bot.get_file(message.voice.file_id)
                 downloaded_file = self.bot.download_file(file_info.file_path)
                 voice_file_path = os.path.join(config.TEMP_DIR, f"voice_{message.voice.file_id}.ogg")
@@ -80,11 +78,9 @@ class Bot:
                         self.bot.send_voice(message.chat.id, voice_response)
                     os.remove(voice_response_path)
             
-        except Exception as e:
-            logger.error(f"Ошибка при обработке сообщения: {str(e)}", exc_info=True)
+        except Exception as e:            
             error_message = handle_error(e)
             self.bot.reply_to(message, error_message)
 
-    def run(self):
-        logger.info("Запуск бота")
+    def run(self):        
         self.bot.polling(none_stop=True)

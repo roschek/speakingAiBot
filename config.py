@@ -3,22 +3,17 @@ from pathlib import Path
 from dotenv import load_dotenv
 import requests
 
-# Загрузка переменных окружения
 load_dotenv()
 
-# Базовые пути
 BASE_DIR = Path(__file__).parent
 TEMP_DIR = BASE_DIR / "temp"
 
-# Создание временной директории, если её нет
 TEMP_DIR.mkdir(exist_ok=True)
 
-# Токены
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 ELEVENLABS_API_KEY = os.getenv("TALKING_SERVICE")
 
-# Языковые настройки
 DEFAULT_LANGUAGE = "ru"
 SUPPORTED_LANGUAGES = {
     "ru": "Русский",
@@ -26,16 +21,13 @@ SUPPORTED_LANGUAGES = {
     "he": "עברית"
 }
 
-# Сообщения об ошибках
 ERROR_MESSAGES = {
     'general_error': "Произошла ошибка при обработке вашего запроса. Попробуйте позже.",
     'voice_recognition_error': "Не удалось распознать голосовое сообщение. Попробуйте еще раз.",
 }
 
-# Максимальная длина сообщения
 MAX_MESSAGE_LENGTH = 4096
 
-# Приветственные сообщения
 WELCOME_MESSAGES = {
     "ru": (
         "Здравствуйте! Я ваш персональный преподаватель русского языка.\n\n"
